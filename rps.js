@@ -19,7 +19,7 @@ function getPlayerChoice() {
     while (!(validChoices.includes(playerChoice.toLowerCase()))) {
         playerChoice = prompt("That is not a valid response. Please try again: ")
     }
-    return playerChoice
+    return playerChoice.toLowerCase()
 }
 
 var computerChoice = getComputerChoice();
