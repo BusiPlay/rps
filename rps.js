@@ -39,26 +39,43 @@ function playRound(playerChoice, computerChoice) {
     let computerChoiceInt = rpsStrToInt(computerChoice)
     if (playerChoice == computerChoice)
         return "It's a tie!"
-    else if ((playerChoiceInt == 0 && computerChoiceInt == 3) || (playerChoiceInt > computerChoiceInt)) {
+    else if ((playerChoiceInt == 1 && computerChoiceInt == 3) || (playerChoiceInt > computerChoiceInt)) {
         playerScore++
-        console.log(playerScore)
         return "Player wins!"
     }
     else {
         computerScore++
-        console.log(computerScore)
         return "Computer wins!"
     }
 }
 
+function playGame(rounds) {
+    let roundsPlayed = 0
+    
+    var playerChoice, computerChoice, roundResult
+
+    while (roundsPlayed < rounds){
+        roundsPlayed++
+        playerChoice = getPlayerChoice()
+        computerChoice = getComputerChoice()
+        console.log("Player picks " + playerChoice)
+        console.log("Computer picks " + computerChoice)
+        roundResult = playRound(playerChoice, computerChoice)
+        console.log(roundResult)
+    }
+    if (playerScore > computerScore) {
+        console.log("Player wins " + playerScore + " to " + computerScore + "!")
+    }
+    else if (computerScore > playerScore) {
+        console.log("Computer wins " + computerScore + " to " + playerScore + "!")
+    }
+    // can only happen if rounds is even0
+    else console.log("It's a tie!")
+}
 
 var playerScore = 0
 var computerScore = 0
-var computerChoice = getComputerChoice()
-var playerChoice = getPlayerChoice()
-
-console.log(computerChoice)
-console.log(playerChoice)
-console.log(playRound(playerChoice, computerChoice))
+   
+playGame(5)
 console.log(playerScore)
 console.log(computerScore)
